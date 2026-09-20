@@ -1,0 +1,230 @@
+/* Base page styling */
+:root {
+  --intel-blue: #0071c5;
+  --intel-blue-dark: #005aa3;
+  --intel-navy: #071a2d;
+  --intel-white: #ffffff;
+  --intel-light: #edf6ff;
+  --intel-border: #d7eafc;
+  --text-dark: #10233d;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background: var(--intel-light);
+  color: var(--text-dark);
+}
+
+/* Hero section */
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 480px;
+  padding: 40px 20px;
+
+  /* Solid Intel-inspired blue background keeps the logo and headline clear. */
+  background: linear-gradient(
+    90deg,
+    rgba(0, 113, 197, 0.95) 0%,
+    rgba(0, 90, 163, 0.92) 36%,
+    rgba(7, 26, 45, 0.88) 100%
+  );
+}
+
+.hero-content {
+  width: 100%;
+  max-width: 1100px;
+  padding: 20px 30px;
+  color: var(--intel-white);
+}
+
+.hero-logo {
+  display: block;
+  width: 260px;
+  max-width: 75%;
+  height: auto;
+  margin-bottom: 20px;
+}
+
+.hero h1 {
+  margin: 0 0 16px;
+  font-size: clamp(2.4rem, 4vw, 4.5rem);
+  line-height: 1.05;
+  letter-spacing: -0.04em;
+  font-weight: 700;
+  color: var(--intel-white);
+}
+
+.hero p {
+  margin: 0;
+  max-width: 700px;
+  font-size: clamp(1rem, 2vw, 1.35rem);
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.96);
+}
+
+/* Timeline section */
+.timeline-section {
+  padding: 30px 20px 10px;
+  background: var(--intel-light);
+}
+
+.timeline-scroll {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  padding: 10px 8px 20px;
+
+  /* Scroll snap keeps each timeline card aligned while users scroll horizontally. */
+  /* x = horizontal scrolling, proximity = the browser snaps gently near the card. */
+  scroll-snap-type: x proximity;
+}
+
+.milestone-card {
+  flex: 0 0 320px;
+  background: var(--intel-white);
+  border: 1px solid var(--intel-border);
+  border-radius: 18px;
+  padding: 18px;
+  box-shadow: 0 8px 18px rgba(7, 26, 45, 0.08);
+
+  /* Each card snaps into place as the user scrolls. */
+  scroll-snap-align: start;
+
+  /* Smooth transition for hover effects */
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+  overflow: hidden;
+  position: relative;
+}
+
+.milestone-card:hover {
+  /* A subtle lift and slight scale makes the card feel interactive without being distracting. */
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 0 14px 28px rgba(7, 26, 45, 0.14);
+  border-color: var(--intel-blue);
+}
+
+.milestone-year {
+  display: inline-block;
+  background: var(--intel-blue);
+  color: var(--intel-white);
+  font-weight: 700;
+  font-size: 1.1rem;
+  padding: 8px 14px;
+  border-radius: 999px;
+  margin-bottom: 14px;
+}
+
+.milestone-card h3 {
+  margin: 0 0 12px;
+  font-size: 1.4rem;
+  color: var(--intel-navy);
+}
+
+.milestone-card img {
+  display: block;
+  width: 100%;
+  height: 160px;
+
+  /* object-fit: cover keeps the image filled inside the box without stretching. */
+  /* It also keeps the important parts of the photo visible. */
+  object-fit: cover;
+
+  border-radius: 10px;
+  margin-bottom: 12px;
+}
+
+.milestone-details {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s ease, opacity 0.25s ease, margin-top 0.25s ease;
+  opacity: 0;
+}
+
+.milestone-card:hover .milestone-details {
+  max-height: 220px;
+  opacity: 1;
+  margin-top: 10px;
+}
+
+.milestone-card p {
+  margin: 0;
+  font-size: 0.96rem;
+  line-height: 1.6;
+  color: var(--text-dark);
+}
+
+.timeline-note {
+  margin: 0;
+  padding: 0 20px 30px;
+  font-size: 0.95rem;
+  text-align: center;
+  color: var(--intel-navy);
+}
+
+/* Responsive layout */
+@media (max-width: 600px) {
+  .hero {
+    min-height: 380px;
+    padding: 30px 16px;
+  }
+
+  .hero-content {
+    padding: 20px 10px;
+    text-align: center;
+  }
+
+  .hero-logo {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .hero p {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .timeline-section {
+    padding: 20px 12px 10px;
+  }
+
+  .timeline-scroll {
+    display: flex;
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    padding: 0 6px 18px;
+    gap: 14px;
+  }
+
+  .milestone-card {
+    flex: 0 0 82vw;
+    width: 82vw;
+    max-width: 82vw;
+    margin-bottom: 0;
+  }
+
+  .milestone-card h3 {
+    font-size: 1.2rem;
+  }
+
+  .milestone-card p {
+    font-size: 0.9rem;
+  }
+
+  .milestone-card img {
+    height: 140px;
+  }
+
+  .timeline-note {
+    padding: 0 12px 24px;
+    font-size: 0.85rem;
+  }
+}
+
