@@ -211,6 +211,55 @@
     </div>
   </section>
 
+  <!-- Interactive sustainability details -->
+  <section class="container pb-5" aria-labelledby="details-heading">
+    <h2 id="details-heading" class="text-center mb-4">Explore Sustainability Details</h2>
+    <div class="accordion" id="sustainabilityAccordion">
+      <div class="accordion-item">
+        <h3 class="accordion-header" id="rise-heading">
+          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#rise-details" aria-expanded="true" aria-controls="rise-details">
+            How does the RISE strategy support sustainability?
+          </button>
+        </h3>
+        <div id="rise-details" class="accordion-collapse collapse show" aria-labelledby="rise-heading" data-bs-parent="#sustainabilityAccordion">
+          <div class="accordion-body">
+            Intel's RISE strategy focuses on responsible, inclusive, sustainable,
+            and enabling progress through goals for climate action, water stewardship,
+            and waste reduction.
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <h3 class="accordion-header" id="net-zero-heading">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#net-zero-details" aria-expanded="false" aria-controls="net-zero-details">
+            What is Intel's net-zero commitment?
+          </button>
+        </h3>
+        <div id="net-zero-details" class="accordion-collapse collapse" aria-labelledby="net-zero-heading" data-bs-parent="#sustainabilityAccordion">
+          <div class="accordion-body">
+            Intel has committed to achieving net-zero Scope 1 and Scope 2 greenhouse
+            gas emissions across its global operations by 2040.
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <h3 class="accordion-header" id="water-heading">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#water-details" aria-expanded="false" aria-controls="water-details">
+            How does Intel manage water and waste?
+          </button>
+        </h3>
+        <div id="water-details" class="accordion-collapse collapse" aria-labelledby="water-heading" data-bs-parent="#sustainabilityAccordion">
+          <div class="accordion-body">
+            Intel conserves water, restores watersheds with local communities, and
+            recycles or upcycles materials to support a more circular economy.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Subscription Form -->
   <section class="container py-5">
     <h2 class="text-center mb-4">Subscribe to our Newsletter</h2>
@@ -258,5 +307,47 @@
       </div>
     </div>
   </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+    // Languages that are normally written from right to left.
+    const rtlLanguages = ["ar", "dv", "fa", "he", "ku", "ps", "sd", "ur", "yi"];
+
+    function getPageLanguage() {
+      const translateLanguage = document.querySelector(".goog-te-combo")?.value;
+      return translateLanguage || document.documentElement.lang || "en";
+    }
+
+    function updateTextDirection() {
+      const pageLanguage = getPageLanguage().toLowerCase().split("-")[0];
+      const bodyClasses = document.body.classList;
+      const translatedToRtl = bodyClasses.contains("translated-rtl");
+      const translatedToLtr = bodyClasses.contains("translated-ltr");
+      const shouldUseRtl = translatedToRtl || (!translatedToLtr && rtlLanguages.includes(pageLanguage));
+
+      document.documentElement.dir = shouldUseRtl ? "rtl" : "ltr";
+    }
+
+    updateTextDirection();
+
+    // Google Translate can update the language or body classes after page load.
+    const directionObserver = new MutationObserver(updateTextDirection);
+    directionObserver.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ["lang", "class"]
+    });
+    directionObserver.observe(document.body, {
+      attributes: true,
+      attributeFilter: ["class", "lang"]
+    });
+
+    // Recheck when a translation widget changes its selected language.
+    document.addEventListener("change", (event) => {
+      if (event.target.matches(".goog-te-combo")) {
+        updateTextDirection();
+      }
+    });
+  </script>
 </body>
 </html>
