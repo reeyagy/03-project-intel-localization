@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="rtl">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.rtl.min.css" rel="stylesheet">
   <title>Intel: Sustainability Through the Ages</title>
   <link rel="stylesheet" href="style.css" />
 </head>
@@ -12,7 +12,7 @@
   <!-- Header / Hero Section -->
   <header class="hero">
     <div class="hero-content">
-      <!-- Ask Copilot to teach you about `.svg`. 🙂 You'll need to resize the logo with CSS. -->
+      <!-- Ask Copilot to teach you about `.svg`. You'll need to resize the logo with CSS. -->
       <img class="hero-logo" src="img/intel-header-logo.svg" alt="Intel Logo" />
       <!-- Main Heading -->
       <h1>
@@ -23,7 +23,7 @@
       <p>
         Explore Intel's journey through time, discovering how our commitment
         to innovation has shaped a more sustainable future for technology 
-        and our planet.
+        and our planet
       </p>
     </div>
   </header>
@@ -205,10 +205,50 @@
   </section>
 
   <!-- Subscription Form -->
-  <section>
-    <h2>Subscribe to our Newsletter</h2>
-    <!-- Add form here -->
+  <section class="container py-5">
+    <h2 class="text-center mb-4">Subscribe to our Newsletter</h2>
+    <form>
+      <div class="row g-3 align-items-end">
+        <div class="col-12 col-md-4">
+          <label for="subscriber-name" class="form-label">Name</label>
+          <input type="text" class="form-control" id="subscriber-name" placeholder="Your name" required />
+        </div>
+
+        <div class="col-12 col-md-4">
+          <label for="subscriber-email" class="form-label">Email address</label>
+          <input type="email" class="form-control" id="subscriber-email" placeholder="name@example.com" required />
+        </div>
+
+        <div class="col-12 col-md-4">
+          <button type="submit" class="btn btn-primary w-100">Subscribe</button>
+        </div>
+      </div>
+    </form>
   </section>
   <p class="timeline-note">Scroll to view timeline | Hover over cards to learn more!</p>
+
+  <!-- Footer -->
+  <footer class="bg-dark text-white py-4">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-12 col-md-4 text-center text-md-start">
+          <p class="mb-0">&copy; 2026 Intel Corporation</p>
+        </div>
+
+        <div class="col-12 col-md-4 text-center">
+          <h2 class="h5">Quick Links</h2>
+          <nav aria-label="Footer navigation">
+            <a class="link-light d-block" href="#">Privacy Policy</a>
+            <a class="link-light d-block" href="#">Terms of Use</a>
+          </nav>
+        </div>
+
+        <div class="col-12 col-md-4 text-center text-md-end">
+          <h2 class="h5">Contact</h2>
+          <a class="link-light" href="mailto:contact@example.com">Contact Intel</a>
+        </div>
+      </div>
+    </div>
+  </footer>
 </body>
 </html>
